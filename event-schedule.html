@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Schedule - IIPE JNTUK Student Chapter</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f7; /* Light background for contrast */
+        }
+
+        /* Title Heading Bar */
+        .title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003b82;
+            padding: 10px 20px;
+            color: white;
+            height: 60px;
+        }
+
+        .title-bar h1 {
+            margin: 0;
+            font-size: 18px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .title-bar img {
+            height: 50px; /* Adjusted logo height */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* Status Bar - Hamburger Menu */
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .nav-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #003b82;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .nav-menu a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            background-color: #ffdd33;
+            color: #003b82;
+        }
+
+        .nav-menu .closebtn {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            font-size: 30px;
+            margin-left: 50px;
+        }
+
+        /* Events Schedule Section */
+        .events-schedule-section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .events-schedule-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #003b82; /* Dark blue color */
+        }
+
+        .events-schedule-section p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #333; /* Dark text color */
+        }
+
+        /* Event Box Styles */
+        .event-box {
+            display: inline-block;
+            width: 45%;
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 59, 130, 0.1), rgba(0, 59, 130, 0.3));
+            z-index: 1;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        .event-box:hover::before {
+            opacity: 1;
+        }
+
+        .event-box h3 {
+            font-size: 24px;
+            margin-top: 0;
+            color: #003b82; /* Dark blue color */
+        }
+
+        .event-box p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #666; /* Slightly lighter text color */
+        }
+
+        /* Button Styles */
+        .button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffdd33;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #003b82;
+            color: #fff;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .title-bar {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .title-bar h1 {
+                font-size: 16px;
+            }
+
+            .event-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Heading Bar -->
+    <div class="title-bar">
+        <span class="menu-btn" onclick="openNav()">&#9776;</span>
+        <img src="https://raw.githubusercontent.com/YugTroniX-Robotics/Yugfiles/main/IIWO.png?token=GHSAT0AAAAAACXEEHKB7RYAQBQFVJ352LS4ZW4EH7A" alt="IIPE Logo"> <!-- Replace with your IIPE logo -->
+        <h1>Events Schedule - Indian Institute of Production Engineers</h1>
+        <img src="https://raw.githubusercontent.com/YugTroniX-Robotics/Yugfiles/main/Jntuk-logo.png" alt="JNTUK Logo"> <!-- Replace with your JNTUK logo -->
+    </div>
+
+    <!-- Status Bar - Hamburger Menu -->
+    <div id="myNav" class="nav-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="event-schedule.html">Event Schedule</a>
+    </div>
+
+    <!-- Events Schedule Section -->
+    <div class="events-schedule-section">
+        <h2>Upcoming Events</h2>
+        <div class="event-box">
+            <h3>Robotics Workshop</h3>
+            <p>Date: October 10, 2024</p>
+            <p>Description: A workshop focusing on the fundamentals of robotics and hands-on experience with robotic kits.</p>
+        </div>
+        <div class="event-box">
+            <h3>Mechanical Engineering Symposium</h3>
+            <p>Date: November 5, 2024</p>
+            <p>Description: A symposium featuring guest lectures, panel discussions, and networking opportunities with industry experts.</p>
+        </div>
+        <div class="event-box">
+            <h3>Tech Talk on AI</h3>
+            <p>Date: December 15, 2024</p>
+            <p>Description: An insightful talk on the latest trends in artificial intelligence and its impact on various industries.</p>
+        </div>
+        <div class="event-box">
+            <h3>Innovation Fair</h3>
+            <p>Date: January 20, 2025</p>
+            <p>Description: A fair showcasing innovative projects and research by students, with interactive displays and demonstrations.</p>
+        </div>
+        <div class="event-box">
+            <h3>Annual Engineering Conference</h3>
+            <p>Date: February 10, 2025</p>
+            <p>Description: An annual conference featuring presentations on cutting-edge research and advancements in engineering.</p>
+        </div>
+        <div class="event-box">
+            <h3>Summer Robotics Camp</h3>
+            <p>Date: June 5, 2025</p>
+            <p>Description: A summer camp designed for high school students to learn about robotics through fun and engaging activities.</p>
+        </div>
+    </div>
+
+    <!-- Button to Return Home -->
+    <div class="section">
+        <button class="button" onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+
+    <!-- JavaScript for Navigation Menu -->
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0";
+        }
+    </script>
+</body>
+</html>
